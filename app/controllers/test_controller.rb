@@ -1,4 +1,6 @@
 class TestController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def loop
     job_checking_polling_time = params.fetch(:job_checking_polling_time, 5).to_f # seconds
     max_poll_time_until_redirect = params.fetch(:max_poll_time_until_redirect, 20).to_i #seconds
